@@ -27,9 +27,14 @@ jobs:
           target: ${{ matrix.target }}
           profile: minimal
           override: true
-      - name: Install dependencies
+      - name: Install LLVM (Windows)
         if: runner.os == 'Windows'
-        run: git clone --config core.autocrlf=false https://github.com/llvm/llvm-project.git   
+        shell: powershell
+        run: |
+          Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+          scoop install llvm --global
+        env:
+          LIBCLANG_PATH: "C:\\ProgramData\\scoop\\apps\\llvm\\current\\bin"  
       - name: Run librocksdb-sys tests
         uses: actions-rs/cargo@v1
         with:
