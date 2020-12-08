@@ -79,6 +79,9 @@ jobs:
       - name: Install dependencies
         if: runner.os == 'Windows'
         run: choco install llvm -y
+      - name: Delete msys
+        if: runner.os == 'Windows'
+        run: rm "C:\msys64"
       - name: Run librocksdb-sys tests
         uses: actions-rs/cargo@v1
         with:
