@@ -29,10 +29,7 @@ jobs:
           override: true
       - name: Install dependencies
         if: runner.os == 'Windows'
-        run: choco install llvm -y
-      - name: Delete msys
-        if: runner.os == 'Windows'
-        run: rustup update stable-x86_64-pc-windows-msvc        
+        run: choco install llvm -y      
       - name: Run librocksdb-sys tests
         uses: actions-rs/cargo@v1
         with:
