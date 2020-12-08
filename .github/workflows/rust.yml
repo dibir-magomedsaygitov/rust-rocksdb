@@ -29,10 +29,7 @@ jobs:
           override: true
       - name: Install dependencies
         if: runner.os == 'Windows'
-        run: choco install llvm -y
-      - name: set env variable
-        if: runner.os == 'Windows'
-        run: set PATH=%PATH%;"C:\Program Files\LLVM\bin"    
+        run: git clone --config core.autocrlf=false https://github.com/llvm/llvm-project.git   
       - name: Run librocksdb-sys tests
         uses: actions-rs/cargo@v1
         with:
