@@ -12,7 +12,7 @@ categories = [ "api-bindings", "database", "external-ffi-bindings" ]
 links = "rocksdb"
 
 [features]
-default = [ "static" ]
+default = [ "runtime" ]
 static = []
 snappy = []
 lz4 = []
