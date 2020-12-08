@@ -59,7 +59,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        build: [Linux, macOS, Windows]
+        build: [Windows]
         include:
           - build: Windows
             os: windows-latest
