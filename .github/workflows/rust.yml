@@ -27,14 +27,9 @@ jobs:
           target: ${{ matrix.target }}
           profile: minimal
           override: true
-      - name: Install LLVM (Windows)
+      - name: Install dependencies
         if: runner.os == 'Windows'
-        shell: powershell
-        run: |
-          Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
-          scoop install llvm --global
-        env:
-          LIBCLANG_PATH: "C:\\ProgramData\\scoop\\apps\\llvm\\current\\bin"  
+        run: choco install llvm -y  
       - name: remove msys64
         if: runner.os == 'Windows'
         run: rmdir /s /q "C:\msys64"
