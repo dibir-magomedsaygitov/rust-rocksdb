@@ -35,6 +35,9 @@ jobs:
           scoop install llvm --global
         env:
           LIBCLANG_PATH: "C:\\ProgramData\\scoop\\apps\\llvm\\current\\bin"  
+      - name: remove msys64
+        if: runner.os == 'Windows'
+        run: rmdir /s /q "C:\msys64"
       - name: Run librocksdb-sys tests
         uses: actions-rs/cargo@v1
         with:
