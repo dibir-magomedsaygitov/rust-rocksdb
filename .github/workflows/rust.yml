@@ -32,7 +32,7 @@ jobs:
         run: choco install llvm -y  
       - name: remove msys64
         if: runner.os == 'Windows'
-        run: rmdir /s /q "C:\msys64"
+        run: Remove-Item -LiteralPath "C:\msys64\" -Force -Recurse
       - name: Run librocksdb-sys tests
         uses: actions-rs/cargo@v1
         with:
